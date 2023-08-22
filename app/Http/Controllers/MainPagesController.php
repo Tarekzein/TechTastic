@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class MainPagesController extends Controller
 {
     public function home(){
-        return view('mainpages.welcome');
+        $latest_posts=Post::latest()->limit(2)->get();
+        return view('mainpages.welcome',["posts"=>$latest_posts]);
 
     }
     public function blog(){
